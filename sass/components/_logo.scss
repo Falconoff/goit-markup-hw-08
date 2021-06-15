@@ -1,0 +1,25 @@
+.logo {
+  display: block;
+  margin-right: 93px;
+
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  color: var(--accent-color);
+
+  transform: scale(1);
+  transition: transform var(--trans-duration) var(--timing-function);
+
+  &--dark-theme {
+    color: var(--main-color);
+  }
+
+  &--light-theme {
+    color: var(--white-color);
+  }
+
+  &:hover,
+  &:focus {
+    transform: scale(1.2);
+  }
+}
