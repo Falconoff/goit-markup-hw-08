@@ -1,7 +1,7 @@
-%header-links {
-  font-size: 14px;
+@mixin header-links($fz: 14px, $lh: 1.14) {
+  font-size: $fz;
   font-weight: 500;
-  line-height: 1.14;
+  line-height: $lh;
   letter-spacing: 0.02em;
 
   padding-top: 32px;
