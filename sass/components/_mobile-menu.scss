@@ -10,9 +10,10 @@
     visibility: hidden;
     pointer-events: none;
 
-    overflow: auto;
+    background-color: var(--white-color);
 
-    background-color: wheat;
+    overflow: auto;
+    z-index: 1;
 
     &.is-open {
       opacity: 1;
@@ -23,7 +24,6 @@
     &__container {
       // position: relative;
 
-      // width: 100%;
       height: 100%;
 
       padding: 48px 40px 38px;
@@ -44,7 +44,6 @@
       background-color: transparent;
       border: none;
       padding: 0;
-      outline: 2px dotted gold;
 
       &:hover .mobile-menu__close-icon,
       &focus .mobile-menu__close-icon {
@@ -103,7 +102,7 @@
       line-height: 28px;
       letter-spacing: 0.02em;
 
-      color: #757575;
+      color: var(--second-color);
     }
   }
 
@@ -130,8 +129,6 @@
       font-weight: 500;
       font-size: 18px;
       line-height: 22px;
-      /* identical to box height, or 122% */
-
       letter-spacing: 0.02em;
 
       color: var(--accent-color);

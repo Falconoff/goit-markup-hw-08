@@ -23,7 +23,7 @@
   letter-spacing: 0.01em;
   color: inherit;
 
-  background-color: #fff;
+  background-color: var(--white-color);
   transition: border-color var(--trans-duration) var(--timing-function);
 
   .form__field:focus-within & {
@@ -70,8 +70,15 @@
 .agreement {
   margin-bottom: 30px;
 
+  font-size: 12px;
+  line-height: 1.17;
   text-align: center;
   color: var(--second-color);
+
+  @media screen and (min-width: $desktop) {
+    font-size: 14px;
+    line-height: 1.71;
+  }
 
   &__link {
     text-decoration: underline;
@@ -84,7 +91,6 @@
     height: 15px;
     border: 2px solid var(--main-color);
     border-radius: 2px;
-    margin-right: 5px;
 
     fill: var(--white-color);
     background-color: var(--white-color);

@@ -66,6 +66,10 @@ body {
   background-color: var(--white-color);
 }
 
+body.modal-open {
+  overflow: hidden;
+}
+
 .section {
   padding-top: 60px;
   padding-bottom: 60px;
@@ -81,13 +85,6 @@ body {
 .container {
   padding-left: 15px;
   padding-right: 15px;
-  outline: 1px solid red;
-}
-
-@media screen and (max-width: 319px) {
-  .container {
-    background-color: pink;
-  }
 }
 
 @media screen and (min-width: 480px) {
@@ -179,8 +176,9 @@ body {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+    background-color: var(--white-color);
     overflow: auto;
-    background-color: wheat;
+    z-index: 1;
   }
   .mobile-menu.is-open {
     opacity: 1;
@@ -203,7 +201,6 @@ body {
     background-color: transparent;
     border: none;
     padding: 0;
-    outline: 2px dotted gold;
   }
   .mobile-menu__close-btn:hover .mobile-menu__close-icon,
   .mobile-menu__close-btnfocus .mobile-menu__close-icon {
@@ -250,7 +247,7 @@ body {
     font-size: 24px;
     line-height: 28px;
     letter-spacing: 0.02em;
-    color: #757575;
+    color: var(--second-color);
   }
   .mobile-menu__socials {
     display: flex;
@@ -272,7 +269,6 @@ body {
     font-weight: 500;
     font-size: 18px;
     line-height: 22px;
-    /* identical to box height, or 122% */
     letter-spacing: 0.02em;
     color: var(--accent-color);
   }
@@ -340,6 +336,8 @@ body {
   z-index: 1000;
   width: 100vw;
   height: 100vh;
+  padding: 93px 15px;
+  overflow-y: scroll;
   background-color: rgba(0, 0, 0, 0.2);
   transition-property: opacity, visibility;
   transition: var(--trans-duration) var(--timing-function);
@@ -352,16 +350,36 @@ body {
 }
 
 .modal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 528px;
-  height: 581px;
+  position: relative;
   border-radius: 4px;
   padding: 40px;
   background-color: var(--white-color);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+  /* for mobile devices - landscape */
+}
+
+@media screen and (min-width: 480px) {
+  .modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+  }
+}
+
+@media screen and (max-height: 650px) and (orientation: landscape) {
+  .modal {
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .modal {
+    width: 528px;
+  }
 }
 
 .modal__close-btn {
@@ -384,9 +402,15 @@ body {
   margin-bottom: 30px;
   font-weight: 700;
   font-size: 20px;
-  line-height: 1.15;
+  line-height: 1.5;
   text-align: center;
   color: var(--main-color);
+}
+
+@media screen and (min-width: 1200px) {
+  .modal__title {
+    line-height: 1.15;
+  }
 }
 
 .close-btn__icon {
@@ -420,7 +444,7 @@ body {
   line-height: 1.17;
   letter-spacing: 0.01em;
   color: inherit;
-  background-color: #fff;
+  background-color: var(--white-color);
   transition: border-color var(--trans-duration) var(--timing-function);
 }
 
@@ -464,8 +488,17 @@ body {
 
 .agreement {
   margin-bottom: 30px;
+  font-size: 12px;
+  line-height: 1.17;
   text-align: center;
   color: var(--second-color);
+}
+
+@media screen and (min-width: 1200px) {
+  .agreement {
+    font-size: 14px;
+    line-height: 1.71;
+  }
 }
 
 .agreement__link {
@@ -479,7 +512,6 @@ body {
   height: 15px;
   border: 2px solid var(--main-color);
   border-radius: 2px;
-  margin-right: 5px;
   fill: var(--white-color);
   background-color: var(--white-color);
   transition-property: border-color;
@@ -517,6 +549,10 @@ body {
   color: var(--second-color);
 }
 
+.header-contacts__link:focus, .header-contacts__link:hover {
+  color: var(--accent-color);
+}
+
 .header-contacts__icon {
   fill: currentColor;
 }
@@ -525,7 +561,6 @@ body {
   .header__container {
     padding-top: 10px;
     padding-bottom: 10px;
-    background-color: aqua;
   }
   .header__burger-btn {
     width: 40px;
@@ -534,7 +569,6 @@ body {
     background-color: transparent;
     border: none;
     padding: 0;
-    outline: 2px dotted gold;
   }
   .header__burger-btn:hover .header__burger-icon,
   .header__burger-btn:focus .header__burger-icon {
@@ -949,12 +983,14 @@ body {
   }
 }
 
-.address__item {
-  text-align: center;
-}
-
 .address__item:not(:last-child) {
   padding-bottom: 9px;
+}
+
+@media screen and (max-width: 1199px) {
+  .address__item {
+    text-align: center;
+  }
 }
 
 .address__link {
@@ -978,18 +1014,28 @@ body {
 
 .join__title {
   margin-bottom: 20px;
-  text-align: center;
   font-weight: 700;
   text-transform: uppercase;
+}
+
+@media screen and (max-width: 1199px) {
+  .join__title {
+    text-align: center;
+  }
 }
 
 /* form for spam)) */
 .spam__title {
   display: block;
   margin-bottom: 20px;
-  text-align: center;
   font-weight: 700;
   text-transform: uppercase;
+}
+
+@media screen and (max-width: 1199px) {
+  .spam__title {
+    text-align: center;
+  }
 }
 
 .spam__email-input {
@@ -1042,13 +1088,27 @@ body {
 }
 
 .portfolio-filter {
-  margin-bottom: 50px;
+  margin-bottom: 25px;
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media screen and (min-width: 768px) {
+  .portfolio-filter {
+    justify-content: center;
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .portfolio-filter {
+    margin-bottom: 35px;
+  }
 }
 
 .portfolio-filter__item:not(:last-child) {
   margin-right: 8px;
+  margin-bottom: 15px;
 }
 
 .portfolio-btn {
@@ -1072,10 +1132,12 @@ body {
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
 }
 
-.portfolio-gallery {
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: -30px;
+@media screen and (min-width: 768px) {
+  .portfolio-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: -30px;
+  }
 }
 
 .portfolio-gallery__item {
@@ -1083,8 +1145,22 @@ body {
   margin-bottom: 30px;
 }
 
-.portfolio-gallery__item:not(:nth-child(3n)) {
-  margin-right: 30px;
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .portfolio-gallery__item {
+    width: 354px;
+  }
+  .portfolio-gallery__item:not(:nth-child(2n)) {
+    margin-right: 30px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .portfolio-gallery__item {
+    width: 370px;
+  }
+  .portfolio-gallery__item:not(:nth-child(3n)) {
+    margin-right: 30px;
+  }
 }
 
 .card {
@@ -1099,6 +1175,10 @@ body {
 .card__box {
   position: relative;
   overflow: hidden;
+}
+
+.card__image {
+  width: 100%;
 }
 
 .card__overlay {

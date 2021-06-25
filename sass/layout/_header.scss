@@ -14,6 +14,11 @@
 
   @include header-links();
   color: var(--second-color);
+
+  &:focus,
+  &:hover {
+    color: var(--accent-color);
+  }
 }
 
 .header-contacts__icon {
@@ -25,7 +30,6 @@
     &__container {
       padding-top: 10px;
       padding-bottom: 10px;
-      background-color: aqua;
     }
 
     &__burger-btn {
@@ -37,7 +41,6 @@
       background-color: transparent;
       border: none;
       padding: 0;
-      outline: 2px dotted gold;
 
       &:hover .header__burger-icon,
       &:focus .header__burger-icon {
@@ -69,11 +72,6 @@
   .mobile-menu {
     display: none;
   }
-
-  // .nav {
-  //   display: flex;
-  //   align-items: center;
-  // }
 
   .link-list {
     display: flex;
@@ -116,57 +114,11 @@
       }
     }
   }
-
-  // .header-contacts__link {
-  // display: flex;
-  // align-items: center;
-
-  // font-size: 12px;
-  // @include header-links(12px, 1.17);
-  // font-weight: 500;
-  // line-height: 1.17;
-  // letter-spacing: 0.02em;
-  // color: var(--second-color);
-  // }
-
-  // .link-list__link {
-  //   display: block;
-
-  //   @extend %header-links;
-  //   color: var(--main-color);
-
-  //   &--current {
-  //     position: relative;
-  //     color: var(--accent-color);
-
-  //     &::after {
-  //       content: '';
-  //       position: absolute;
-  //       display: block;
-  //       bottom: -1px;
-  //       left: 0;
-  //       width: 100%;
-  //       height: 4px;
-  //       border-radius: 2px;
-  //       background-color: var(--accent-color);
-  //     }
-  //   }
-  //   &:focus,
-  //   &:hover {
-  //     color: var(--accent-color);
-  //   }
-  // }
 }
 
 @media screen and (min-width: $tablet) and (max-width: $desktop - 1px) {
-  // .header-contacts__item {
-  //   // margin-bottom: 10px;
-  // }
   .header-contacts__link {
     @include header-links(12px, 1.17);
-
-    // font-size: 12px;
-    // line-height: 1.17;
 
     padding-top: 5px;
     padding-bottom: 5px;
@@ -179,7 +131,6 @@
 @media screen and (min-width: $desktop) {
   .header-contacts {
     display: flex;
-    // align-items: center;
     margin-left: auto;
 
     &__link {
@@ -191,13 +142,6 @@
     &__link:hover {
       color: var(--accent-color);
     }
-    //  {
-    // display: flex;
-    // align-items: center;
-
-    // @extend %header-links;
-    // color: var(--second-color);
-    // }
 
     &__item:not(:last-child) {
       margin-right: 30px;
@@ -205,12 +149,6 @@
 
     &__icon {
       margin-right: 10px;
-      // fill: currentColor;
     }
-
-    // &:focus,
-    // &__link:hover {
-    //   color: var(--accent-color);
-    // }
   }
 }

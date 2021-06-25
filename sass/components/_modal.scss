@@ -1,17 +1,32 @@
 .modal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
 
-  width: 528px;
-  height: 581px;
   border-radius: 4px;
   padding: 40px;
 
   background-color: var(--white-color);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
+
+  @media screen and (min-width: $mobile) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 450px;
+  }
+
+  /* for mobile devices - landscape */
+  @media screen and (max-height: 650px) and (orientation: landscape) {
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: 528px;
+  }
 
   &__close-btn {
     position: absolute;
@@ -37,9 +52,13 @@
 
     font-weight: 700;
     font-size: 20px;
-    line-height: 1.15;
+    line-height: 1.5;
     text-align: center;
     color: var(--main-color);
+
+    @media screen and (min-width: $desktop) {
+      line-height: 1.15;
+    }
   }
 }
 

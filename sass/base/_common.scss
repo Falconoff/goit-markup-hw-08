@@ -34,3 +34,7 @@ body {
 
   background-color: var(--white-color);
 }
+
+body.modal-open {
+  overflow: hidden;
+}
