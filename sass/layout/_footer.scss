@@ -7,20 +7,46 @@
 
   &__logo {
     margin-bottom: 20px;
+    text-align: center;
   }
 }
 
 .flex-wrap {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
+  @media screen and (min-width: $tablet) {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-around;
+  }
+}
+
+.wrapper {
+  @media screen and (min-width: $desktop) {
+    margin-right: 70px;
+  }
+}
+
+.footer__container {
+  @media screen and (min-width: $desktop) {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
 }
 
 .address {
+  @media screen and (max-width: $desktop - 1px) {
+    margin-bottom: 60px;
+  }
+
   font-style: normal;
 
-  &__item:not(:last-child) {
-    padding-bottom: 9px;
+  &__item {
+    // display: block;
+    text-align: center;
+
+    &:not(:last-child) {
+      padding-bottom: 9px;
+    }
   }
 
   &__link {
@@ -42,23 +68,40 @@
 
 /* join-block with social links */
 
-.join__title {
-  margin-bottom: 20px;
+.join {
+  margin-bottom: 60px;
 
-  font-weight: 700;
-  text-transform: uppercase;
+  &__title {
+    margin-bottom: 20px;
+
+    text-align: center;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
 }
 
 /* form for spam)) */
 
 .spam {
+  &__title {
+    display: block;
+    margin-bottom: 20px;
+
+    text-align: center;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
   &__email-input {
+    margin-bottom: 20px;
+
     height: 50px;
-    width: 358px;
+    // width: 358px;
+    width: 100%;
 
     padding-left: 16px;
     padding-right: 16px;
-    margin-right: 12px;
+    // margin-right: 12px;
     border-radius: 4px;
     border: 1px solid var(--footer-form-border);
 
@@ -71,14 +114,27 @@
       outline: none;
       border-color: var(--accent-color);
     }
+
+    @media screen and (min-width: $tablet) {
+      display: block;
+      width: 450px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+    @media screen and (min-width: $desktop) {
+      display: inline-block;
+      width: 358px;
+
+      margin-right: 12px;
+    }
   }
 
-  &__title {
-    display: block;
-    margin-bottom: 20px;
-
-    font-weight: 700;
-    text-transform: uppercase;
+  &__btn {
+    @media screen and (max-width: $desktop - 1px) {
+      display: block;
+      margin-right: auto;
+      margin-left: auto;
+    }
   }
 
   &__icon {
@@ -87,3 +143,94 @@
     fill: var(--white-color);
   }
 }
+
+// ========================= desktop ==================
+// .footer {
+//   padding-top: 60px;
+//   padding-bottom: 60px;
+
+//   background-color: var(--bg-dark);
+//   color: var(--white-color);
+
+//   &__logo {
+//     margin-bottom: 20px;
+//   }
+// }
+
+// .flex-wrap {
+//   display: flex;
+//   align-items: baseline;
+//   justify-content: space-between;
+// }
+
+// .address {
+//   font-style: normal;
+
+//   &__item:not(:last-child) {
+//     padding-bottom: 9px;
+//   }
+
+//   &__link {
+//     line-height: 1.71;
+//     color: var(--white-color);
+
+//     transition: color var(--trans-duration) var(--timing-function);
+
+//     &--gray {
+//       color: rgba(255, 255, 255, 0.6);
+//     }
+
+//     &:focus,
+//     &:hover {
+//       color: var(--accent-color);
+//     }
+//   }
+// }
+
+// /* join-block with social links */
+
+// .join__title {
+//   margin-bottom: 20px;
+
+//   font-weight: 700;
+//   text-transform: uppercase;
+// }
+
+// /* form for spam)) */
+
+// .spam {
+//   &__email-input {
+//     height: 50px;
+//     width: 358px;
+
+//     padding-left: 16px;
+//     padding-right: 16px;
+//     margin-right: 12px;
+//     border-radius: 4px;
+//     border: 1px solid var(--footer-form-border);
+
+//     color: var(--white-color);
+
+//     background-color: inherit;
+//     transition: border-color var(--trans-duration) var(--timing-function);
+
+//     .spam__form:focus-within & {
+//       outline: none;
+//       border-color: var(--accent-color);
+//     }
+//   }
+
+//   &__title {
+//     display: block;
+//     margin-bottom: 20px;
+
+//     font-weight: 700;
+//     text-transform: uppercase;
+//   }
+
+//   &__icon {
+//     vertical-align: middle;
+//     margin-left: 12px;
+//     fill: var(--white-color);
+//   }
+// }
