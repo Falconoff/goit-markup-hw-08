@@ -433,6 +433,10 @@ body.modal-open {
   margin-bottom: 20px;
 }
 
+.form__field:focus-within .form__label {
+  color: var(--accent-color);
+}
+
 .form__input {
   display: block;
   width: 100%;
@@ -453,24 +457,25 @@ body.modal-open {
   border-color: var(--accent-color);
 }
 
-.form__input::placeholder {
+.form__field:focus-within .form__input::placeholder {
   color: var(--placeholder-text-color);
 }
 
-.form__textarea {
-  resize: none;
-  height: 120px;
-  padding: 12px 16px;
-  overflow: auto;
+.form__input::placeholder {
+  color: transparent;
+  transition: color var(--trans-duration) var(--timing-function);
 }
 
 .form__label {
   position: absolute;
-  bottom: calc(100% + 4px);
+  top: 50%;
+  transform: translateY(-50%);
+  left: 42px;
   font-size: 12px;
   line-height: 1.17;
   letter-spacing: 0.01em;
   color: var(--second-color);
+  transition: transform var(--trans-duration) var(--timing-function);
 }
 
 .form__icon {
@@ -484,6 +489,28 @@ body.modal-open {
 
 .form__field:focus-within .form__icon {
   fill: var(--accent-color);
+}
+
+.form__input:not(:placeholder-shown) + .form__label,
+.form__field:focus-within .form__label {
+  transform: translate(-42px, -36px);
+}
+
+.form__textarea {
+  resize: none;
+  height: 120px;
+  padding: 12px 16px;
+  overflow: auto;
+}
+
+.textarea__label {
+  top: 20px;
+  left: 16px;
+}
+
+.form__textarea:not(:placeholder-shown) + .textarea__label,
+.textarea__field:focus-within .textarea__label {
+  transform: translate(-15px, -37px);
 }
 
 .agreement {
